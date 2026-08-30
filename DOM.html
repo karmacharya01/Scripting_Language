@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Important DOM Methods</title>
+</head>
+<body>
+
+    <h2 id="title">Hello World</h2>
+
+    <p class="demo">Paragraph 1</p>
+    <p class="demo">Paragraph 2</p>
+
+    <input type="text" id="name" placeholder="Enter Name">
+
+    <button id="btn">Click Me</button>
+
+    <ul id="list">
+        <li>Apple</li>
+    </ul>
+
+    <script>
+        // 1. getElementById()
+        document.getElementById("title").innerHTML = "Welcome to JavaScript";
+
+        // 2. getElementsByClassName()
+        let p = document.getElementsByClassName("demo");
+        p[0].style.color = "red";
+
+        // 3. querySelector()
+        document.querySelector(".demo").style.fontWeight = "bold";
+
+        // 4. querySelectorAll()
+        let allPara = document.querySelectorAll(".demo");
+        allPara.forEach(item => item.style.backgroundColor = "yellow");
+
+        // 5. createElement() + appendChild()
+        let li = document.createElement("li");
+        li.innerHTML = "Banana";
+        document.getElementById("list").appendChild(li);
+
+        // 6. setAttribute()
+        document.getElementById("name").setAttribute("value", "John");
+
+        // 7. getAttribute()
+        console.log(document.getElementById("name").getAttribute("value"));
+
+        // 8. addEventListener()
+        document.getElementById("btn").addEventListener("click", function () {
+            alert("Button Clicked!");
+        });
+    </script>
+
+</body>
+</html>
