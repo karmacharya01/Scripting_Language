@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Cookie Example</title>
+</head>
+<body>
+    <h2>JavaScript Cookies in HTML</h2>
+    <input type="text" id="inp" placeholder="Enter your name" />
+    <button onclick="cookieAction('save')">Save Cookie</button>
+    <button onclick="cookieAction('show')">Show Saved Cookie</button>
+    <button onclick="cookieAction('del')">Delete Cookie</button>
+    <p id="disp" style="color: blue; font-weight: bold"></p>
+
+    <script>
+        const inp = document.getElementById("inp");
+        const disp = document.getElementById("disp");
+
+        function cookieAction(action) {
+            if (action === 'save') {
+                if (!inp.value.trim()) return alert("Please enter a name first!");
+                // Max-age=86400 sets the expiration timeline to exactly 1 day
+                document.cookie = `user=${encodeURIComponent(inp.value)};max-age=86400;path=/`;
+                disp.innerText = "Cookie saved successfully!";
+            } 
+            else if (action === 'show') {
+                // Splits cookies and finds the one starting with "user="
+                const cookie = document.cookie.split('; ').find(row => row.startsWith('user='));
+                disp.innerText = cookie 
+                    ? "Stored Cookie Value: " + decodeURIComponent(cookie.split('=')[1]) 
+                    : "No 'user' cookie found.";
+            } 
+            else if (action === 'del') {
+                document.cookie = "user=;max-age=0;path=/";
+                disp.innerText = "Cookie deleted.";
+                inp.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
+  
