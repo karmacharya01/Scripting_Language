@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internal JS</title>
+  </head>
+
+  <body>
+    <h2>Demo of the Internal Javascript.</h2>
+    <p class="demo">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis
+      optio distinctio consequuntur, quas quis itaque voluptatem rerum, omnis
+      consequatur facilis sequi doloribus sit repellendus error aspernatur ut
+      illum facere aperiam.
+    </p>
+    <button type="button" onclick="myFunction()">Click</button>
+
+    <script>
+      const myFunction = () => {
+        document.querySelector(".demo").innerHTML = "Internal JS";
+      };
+    </script>
+  </body>
+</html>
