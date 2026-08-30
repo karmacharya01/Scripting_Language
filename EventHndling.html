@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events Demo</title>
+    
+</head>
+
+<body>
+
+    <!-- 1. Click Event UI -->
+    <div class="card">
+        <h3>1. Click Event</h3>
+        <button id="clickBtn">Click Me!</button>
+    </div>
+
+    <!-- 2. Form & Keyboard Event UI -->
+    <div class="card">
+        <h3>2. Form & Keyboard Events</h3>
+        <form id="userForm">
+            <input type="text" id="usernameInput" placeholder="Type something...">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Live Event Log Console -->
+    <h4>Live Event Log:</h4>
+    <div id="logBox" class="log-box">System ready. Waiting for events...</div>
+
+    <script>
+        // --- 1. ELEMENT SELECTION ---
+        const clickBtn = document.getElementById('clickBtn');
+        const userForm = document.getElementById('userForm');
+        const usernameInput = document.getElementById('usernameInput');
+        const logBox = document.getElementById('logBox');
+
+        // Helper function to print event logs onto the screen
+        function logAction(message) {
+            logBox.innerHTML += `<br>> ${message}`;
+            logBox.scrollTop = logBox.scrollHeight; // Auto-scrolls log to bottom
+        }
+
+        // --- 2. MOUSE CLICK EVENT ---
+        // Listens for a mouse click on the button
+        clickBtn.addEventListener('click', (event) => {
+            logAction(`Button clicked! Event type: ${event.type}`);
+        });
+
+        // --- 3. KEYBOARD EVENT ---
+        // Listens every time a user releases a key inside the input box
+        usernameInput.addEventListener('keyup', (event) => {
+            logAction(`Key released: "${event.key}"`);
+        });
+
+        // --- 4. FORM SUBMIT EVENT ---
+        // Listens for the form submission and prevents the page from refreshing
+        userForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Stops the browser from reloading the page
+            const inputValue = usernameInput.value;
+
+            if (inputValue.trim() === "") {
+                logAction("Form submit rejected: Input is empty!");
+            } else {
+                logAction(`Form submitted successfully! Data: "${inputValue}"`);
+                usernameInput.value = ""; // Clear the input field
+            }
+        });
+    </script>
+
+</body>
+
+</html>
