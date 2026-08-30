@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>input/output</title>
+</head>
+
+<body>
+  <p id="demo"></p>
+  <p id="demo1"></p>
+
+  <script type="text/javascript">
+    let name = prompt("Enter Your name:");
+    document.getElementById("demo").innerHTML = name;
+
+    // 1. Escaping quotes inside a matching string boundary
+    let dialogue = "The developer said, \"JavaScript is awesome!\"";
+
+    // 2. Creating a formatted multi-line string using newlines and tabs
+    let shoppingList = "Shopping List:\n\t- Apples\n\t- Bananas\n\t- Oranges";
+
+    // 3. Displaying a literal backslash (useful for file paths)
+    let windowsPath = "C:\\Users\\John\\Documents\\Project";
+
+    document.getElementById("demo1").innerHTML = dialogue + "<br>" + shoppingList + "<br>" + windowsPath;
+  </script>
+  <p>Thank u !!</p>
+</body>
+
+</html>
